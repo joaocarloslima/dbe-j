@@ -13,7 +13,7 @@
 		</p:messages>
 		
 		<!-- FORM -->
-		<h:form>
+		<h:form enctype="multipart/form-data">
 			<p:card style="width: 25em; margin: 1em auto">
 				<f:facet name="title">
 	        New Setup
@@ -57,6 +57,16 @@
 							<f:validateDoubleRange minimum="0" />
 							<f:ajax event="blur" render="msg" />	
 						</p:inputNumber>
+					</div>
+					<div class="p-field">
+						<label for="image">Image</label>
+						<p:fileUpload 
+							allowTypes=".jpg" 
+							mode="simple" 
+							id="image"
+							skinSimple="true" 
+							value="#{setupBean.image}"
+						/>
 					</div>
 				</div>
 

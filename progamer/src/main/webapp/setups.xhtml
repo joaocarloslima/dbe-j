@@ -16,6 +16,14 @@
 		<h:form>
 		<div class="card" style="margin:1em">
 			<p:dataTable var="setup" value="#{setupBean.all}">
+				<p:column headerText="img">
+					<img 
+						src="#{request.contextPath}#{setup.imagePath}"
+						class="thumb"
+					 />
+
+				</p:column>
+				
 				<p:column headerText="id">
 					<h:outputText value="#{setup.id}" />
 				</p:column>

@@ -8,8 +8,11 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.primefaces.model.file.UploadedFile;
+
 import br.com.fiap.dao.SetupDao;
 import br.com.fiap.model.Setup;
+import br.com.fiap.service.UploadService;
 
 @Named
 @RequestScoped
@@ -20,9 +23,13 @@ public class SetupBean {
 	@Inject //injeção de dependencia
 	private SetupDao dao;
 	
+	private UploadedFile image;
+	
 	public String save() {
 		System.out.println(this.setup);
+		setup.setImagePath( UploadService.write(image, "setups"));
 		dao.create(setup);
+		
 		
 		FacesContext
 			.getCurrentInstance()
@@ -41,6 +48,14 @@ public class SetupBean {
 
 	public void setSetup(Setup setup) {
 		this.setup = setup;
+	}
+
+	public UploadedFile getImage() {
+		return image;
+	}
+
+	public void setImage(UploadedFile image) {
+		this.image = image;
 	}
 
 }

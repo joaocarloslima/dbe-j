@@ -3,6 +3,8 @@ package br.com.fiap.bean;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 import br.com.fiap.dao.UserDao;
@@ -26,12 +28,22 @@ public class UserBean {
 	}
 	
 	public String login() {
-		System.out.println(user);
+				
 		if (dao.exist(user)) {
+			FacesContext
+				.getCurrentInstance()
+				.getExternalContext()
+				.getSessionMap()
+				.put("user", user);
+			
 			return "setups";
-		}else {
-			return "login";
 		}
+		
+		FacesContext.getCurrentInstance().addMessage(null, 
+				new FacesMessage("Login inválido"));
+		
+		return "login";
+		
 	}
 
 	public User getUser() {

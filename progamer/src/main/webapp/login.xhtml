@@ -9,6 +9,10 @@
 <h:head></h:head>
 
 <body>
+
+	<p:messages>
+		<p:autoUpdate />
+	</p:messages>
 	
 	<h:form>
 	<p:card>
@@ -26,6 +30,7 @@
 		<f:facet name="footer">
 			<p:commandButton value="Login" action="#{userBean.login()}"/>
 		</f:facet>
+
 	</p:card>
 	</h:form>
 

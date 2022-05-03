@@ -14,13 +14,24 @@ public class UserBean {
 
 	private User user = new User();
 	
+	private UserDao dao = new UserDao();
+	
 	public void save() {
 		System.out.println(this.user);
-		new UserDao().create(user);
+		dao.create(user);
 	}
 	
 	public List<User> getAll(){
-		return new UserDao().listAll();
+		return dao.listAll();
+	}
+	
+	public String login() {
+		System.out.println(user);
+		if (dao.exist(user)) {
+			return "setups";
+		}else {
+			return "login";
+		}
 	}
 
 	public User getUser() {

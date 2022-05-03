@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+> 
+
+<h:head></h:head>
+
+<body>
+	
+	<h:form>
+	<p:card>
+		<div class="ui-fluid">
+		    <div class="p-field">
+		        <label for="email">E-mail</label>
+		        <p:inputText id="email" type="text" value="#{userBean.user.email}" />
+		    </div>
+		    <div class="p-field">
+		        <label for="password">Password</label>
+		        <p:password id="password" value="#{userBean.user.password}" />
+		    </div>
+		</div>
+		
+		<f:facet name="footer">
+			<p:commandButton value="Login" action="#{userBean.login()}"/>
+		</f:facet>
+	</p:card>
+	</h:form>
+
+</body>
+
+</html>

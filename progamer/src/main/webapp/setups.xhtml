@@ -9,13 +9,16 @@
 	<ui:composition template="/_template.xhtml">
 		<ui:define name="content">
 		
-		<p:messages>
+		<p:messages id="msg">
 			<p:autoUpdate />
 		</p:messages>
 		
 		<h:form>
 		<div class="card" style="margin:1em">
-			<p:dataTable var="setup" value="#{setupBean.all}">
+			<p:dataTable var="setup" value="#{setupBean.all}" editable="true">
+			
+			 <p:ajax event="rowEdit" listener="#{setupBean.edit()}" update="msg"/>
+			
 				<p:column headerText="img">
 					<img 
 						src="#{request.contextPath}#{setup.imagePath}"
@@ -29,7 +32,14 @@
 				</p:column>
 
 				<p:column headerText="Name">
-					<h:outputText value="#{setup.name}" />
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{setup.name}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{setup.name}" />
+						</f:facet>
+					</p:cellEditor>
 				</p:column>
 
 				<p:column headerText="Description">
@@ -39,6 +49,15 @@
 				<p:column headerText="Price">
 					<h:outputText value="#{setup.price}" />
 				</p:column>
+				
+				<p:column headerText="del">
+					<p:commandButton action="#{setupBean.remove(setup)}" value="apagar" />
+				 	<p:commandButton action="#{setupBean.remove(setup)}" title="remove setup" type="button" icon="pi pi-trash" styleClass="rounded-button ui-button-danger ui-button-flat" />
+				</p:column>
+				
+				<p:column style="width:6rem">
+	                <p:rowEditor editTitle="Edit Row" cancelTitle="Cancel Edit" saveTitle="Save Row"/>
+	            </p:column>
 			</p:dataTable>
 		</div>
 	</h:form>

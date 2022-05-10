@@ -31,4 +31,16 @@ public class SetupDao {
 		
 	}
 
+	public void remove(Setup setup) {	
+		manager.getTransaction().begin();
+		manager.remove(setup);
+		manager.getTransaction().commit();
+	}
+
+	public void update(Setup setup) {
+		manager.getTransaction().begin();
+		setup = manager.merge(setup);
+		manager.getTransaction().commit();
+	}
+
 }

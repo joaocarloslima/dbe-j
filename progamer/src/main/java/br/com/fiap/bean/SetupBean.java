@@ -41,6 +41,24 @@ public class SetupBean {
 	public List<Setup> getAll(){
 		return dao.listAll();
 	}
+	
+	public String remove(Setup setup) {
+		dao.remove(setup);
+		
+		FacesContext
+		.getCurrentInstance()
+		.addMessage(null, new FacesMessage("Setup apagado com sucesso"));
+
+		return "setups?faces-redirect=true";
+	}
+	
+	public void edit() {
+		dao.update(setup);
+		
+		FacesContext
+			.getCurrentInstance()
+			.addMessage(null, new FacesMessage("Setup atualizado com sucesso"));
+	}
 
 	public Setup getSetup() {
 		return setup;

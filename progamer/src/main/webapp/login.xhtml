@@ -6,7 +6,10 @@
       xmlns:p="http://primefaces.org/ui"
 > 
 
-<h:head></h:head>
+<h:head>
+	<title>Progamer</title>
+	<link type="text/css" rel="stylesheet" href="css/global.css"/>
+</h:head>
 
 <body>
 
@@ -15,7 +18,11 @@
 	</p:messages>
 	
 	<h:form>
-	<p:card>
+		<p:card style="width: 25em; margin: 1em auto">
+				<f:facet name="title">
+			        Login
+			    </f:facet>
+			
 		<div class="ui-fluid">
 		    <div class="p-field">
 		        <label for="email">E-mail</label>
@@ -29,6 +36,7 @@
 		
 		<f:facet name="footer">
 			<p:commandButton value="Login" action="#{userBean.login()}"/>
+			<p:commandLink value="Create account" action="register.xhtml"/>
 		</f:facet>
 
 	</p:card>

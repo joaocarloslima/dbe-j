@@ -45,7 +45,17 @@ public class UserBean {
 		return "login";
 		
 	}
-
+	
+	public String logout(){
+		FacesContext
+			.getCurrentInstance()
+			.getExternalContext()
+			.getSessionMap()
+			.remove("user");
+		
+		return "login";
+	}
+	
 	public User getUser() {
 		return user;
 	}

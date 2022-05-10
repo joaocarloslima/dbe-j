@@ -13,6 +13,24 @@
 
 <body style="background-color: #eee">
 
+	<!-- TOOLBAR -->
+	<div class="card">
+	    <h:form>
+	        <p:toolbar>
+	            <p:toolbarGroup>
+	               <h1>Progamer</h1>
+	            </p:toolbarGroup>
+	
+	            <p:toolbarGroup align="right">
+	                <p:menuButton value="#{user.email}">
+	                    <p:menuitem value="Profile" action="profile.xhtml" icon="pi pi-user"/>
+	                    <p:menuitem value="logout" action="#{userBean.logout()}" icon="pi pi-sign-out"/>
+	                </p:menuButton>
+	            </p:toolbarGroup>
+	        </p:toolbar>
+	    </h:form>
+	</div>
+
 	<!--  MENU  -->
 	<div class="card">
 		<h:form>
